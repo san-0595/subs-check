@@ -1,6 +1,8 @@
 FROM debian:bookworm
+
 ENV TZ=Asia/Shanghai
-RUN apt-get update && apt-get install -y ca-certificates tzdata && \
+
+RUN apt-get update && apt-get install -y ca-certificates tzdata  && \
     ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
     rm -rf /var/cache/apt/*  && \
@@ -18,5 +20,6 @@ RUN ARCH=$(uname -m) && \
     else \
         echo "Unsupported architecture: $ARCH"; exit 1; \
     fi
+
 
 CMD /app/BestSub
